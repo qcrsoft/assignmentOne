@@ -1,0 +1,439 @@
+@import url( css/layui.css );
+* {
+	margin: 0px; padding: 0px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+a {
+	text-decoration: none;
+}
+html {
+	width: 100%; height: 100%; -ms-overflow-x: hidden; -ms-overflow-y: auto;
+}
+body {
+	background: rgb(241, 241, 241); width: 100%; min-height: 100%;
+}
+.x-red {
+	color: red;
+}
+.layui-form-switch {
+	margin-top: 0px;
+}
+.layui-input:focus {
+	border-color: rgb(24, 159, 146) !important;
+}
+.layui-textarea:focus {
+	border-color: rgb(24, 159, 146) !important;
+}
+.layui-fluid {
+	padding: 15px;
+}
+.x-nav {
+	background: rgb(255, 255, 255); padding: 0px 20px; height: 39px; line-height: 39px; overflow: hidden; border-bottom-color: rgb(229, 229, 229); border-bottom-width: 1px; border-bottom-style: solid; position: relative; z-index: 99;
+}
+.page {
+	text-align: center;
+}
+.page a {
+	background: rgb(255, 255, 255); padding: 5px; border: 1px solid rgb(226, 226, 226); border-image: none; color: rgb(136, 136, 136); display: inline-block; min-width: 15px;
+}
+.page span {
+	padding: 5px; border: 1px solid rgb(226, 226, 226); border-image: none; display: inline-block; min-width: 15px;
+}
+.page span.current {
+	background: rgb(9, 180, 197); padding: 5px; border: 1px solid rgb(9, 180, 197); border-image: none; color: rgb(255, 255, 255); display: inline-block; min-width: 15px;
+}
+.page .pagination li {
+	text-align: center; margin-right: 5px; display: inline-block;
+}
+.page .pagination li.active span {
+	background: rgb(9, 180, 197); border: 1px solid rgb(9, 180, 197); border-image: none; color: rgb(255, 255, 255);
+}
+.container {
+	width: 100%; height: 45px; background-color: rgb(34, 34, 34);
+}
+.container a {
+	color: rgb(255, 255, 255);
+}
+.layui-nav .layui-nav-item a {
+	color: rgb(255, 255, 255);
+}
+.container .logo a {
+	background-color: rgba(0, 0, 0, 0);
+}
+.container .logo a {
+	width: 200px; line-height: 45px; padding-left: 20px; font-size: 18px; float: left;
+}
+.container .right {
+	float: right; background-color: rgba(0, 0, 0, 0);
+}
+.container .left_open {
+	height: 45px; margin-left: 0px; float: left;
+}
+.container .left_open i {
+	background: rgba(255, 255, 255, 0.1); border-radius: 3px; width: 32px; height: 32px; text-align: center; line-height: 32px; margin-top: 7px; display: block; cursor: pointer;
+}
+.container .left_open i:hover {
+	background: rgba(255, 255, 255, 0.3);
+}
+.container .left {
+	float: left; background-color: rgba(0, 0, 0, 0);
+}
+.container .layui-nav-item {
+	line-height: 45px;
+}
+.container .layui-nav-more {
+	top: 20px;
+}
+.container .layui-nav-child {
+	top: 50px;
+}
+.container .layui-nav-child i {
+	margin-right: 10px;
+}
+.layui-nav .layui-nav-item a {
+	cursor: pointer;
+}
+.layui-nav .layui-nav-child a {
+	color: rgb(51, 51, 51); cursor: pointer;
+}
+.left-nav {
+	left: 0px; top: 45px; width: 220px; bottom: 0px; overflow: hidden; padding-top: 10px; position: absolute; z-index: 2; -ms-overflow-x: hidden; max-width: 220px; background-color: rgb(238, 238, 238);
+}
+#side-nav {
+	width: 220px;
+}
+.left-nav #nav li:hover > a {
+	
+}
+.left-nav #nav .current {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+.left-nav #nav li a {
+	padding: 10px 15px; transition:0.3s; font-size: 14px; border-left-color: transparent; border-left-width: 4px; border-left-style: solid; display: block; cursor: pointer;
+}
+.left-nav a:hover {
+	background: rgb(9, 180, 197) !important; border-color: rgb(4, 86, 78) !important; color: rgb(255, 255, 255);
+}
+.left-nav a.active {
+	background: rgb(9, 180, 197) !important; border-color: rgb(4, 86, 78) !important; color: rgb(255, 255, 255);
+}
+.left-nav #nav li a cite {
+	font-size: 14px;
+}
+.left-nav #nav li .sub-menu {
+	display: none;
+}
+.left-nav #nav li .opened {
+	display: block;
+}
+.left-nav #nav li .opened:hover {
+	
+}
+.left-nav #nav li .opened .current {
+	
+}
+.left-nav #nav li .sub-menu li:hover {
+	
+}
+.left-nav #nav li .sub-menu li a {
+	padding: 12px 15px 12px 30px; font-size: 14px; cursor: pointer;
+}
+.left-nav #nav li .sub-menu li .sub-menu li a {
+	padding-left: 45px;
+}
+.left-nav #nav li .sub-menu li a i {
+	font-size: 12px;
+}
+.left-nav #nav li a i {
+	line-height: 14px; padding-right: 10px;
+}
+.left-nav #nav li .nav_right {
+	font-size: 16px; float: right;
+}
+.x-slide_left {
+	background: url("../images/icon.png") no-repeat 0px 0px; left: 220px; top: 200px; width: 17px; height: 61px; position: absolute; z-index: 3; cursor: pointer;
+}
+.page-content {
+	left: 220px; top: 45px; right: 0px; bottom: 0px; overflow: hidden; position: absolute; z-index: 1;
+}
+.page-content-bg {
+	background: rgba(0, 0, 0, 0.5); left: 220px; top: 45px; right: 0px; bottom: 0px; overflow: hidden; display: none; position: absolute; z-index: 100;
+}
+.page-content .tab {
+	margin: 0px; width: 100%; height: 100%;
+}
+.page-content .layui-tab-title {
+	background: rgb(239, 238, 240); height: 35px; position: relative; z-index: 100;
+}
+.page-content .layui-tab-title li.home i {
+	padding-right: 5px;
+}
+.page-content .layui-tab-title li.home .layui-tab-close {
+	display: none;
+}
+.page-content .layui-tab-title li {
+	line-height: 35px;
+}
+.page-content .layui-tab-title .layui-this::after {
+	height: 36px;
+}
+.page-content .layui-tab-title li .layui-tab-close {
+	border-radius: 50%;
+}
+.page-content .layui-tab-title .layui-this {
+	background: rgb(255, 255, 255);
+}
+.page-content .layui-tab-bar {
+	height: 34px; line-height: 35px;
+}
+.page-content .layui-tab-content {
+	padding: 0px; top: 36px; width: 100%; bottom: 0px; overflow: hidden; position: absolute;
+}
+.page-content .layui-tab-content .layui-tab-item {
+	width: 100%; height: 100%;
+}
+.page-content .layui-tab-content .layui-tab-item iframe {
+	width: 100%; height: 100%;
+}
+.x-admin-carousel {
+	background-color: rgb(255, 255, 255);
+}
+.layui-carousel {
+	background-color: rgb(255, 255, 255);
+}
+.x-admin-carousel > [carousel-item] > * {
+	background-color: rgb(255, 255, 255);
+}
+.x-admin-backlog .x-admin-backlog-body {
+	padding: 10px 15px; border-radius: 2px; transition:0.3s; color: rgb(153, 153, 153); display: block; background-color: rgb(248, 248, 248); -webkit-transition: all .3s;
+}
+.x-admin-backlog-body h3 {
+	padding-bottom: 10px; font-size: 12px;
+}
+.x-admin-backlog-body p cite {
+	color: rgb(9, 180, 197); font-size: 30px; font-style: normal; font-weight: 300;
+}
+.x-admin-backlog-body:hover {
+	color: rgb(136, 136, 136); background-color: rgb(207, 207, 207);
+}
+.layui-table td {
+	min-width: 80px;
+}
+.layui-table th {
+	min-width: 80px;
+}
+table th {
+	-ms-word-break: break-all;
+}
+table td {
+	-ms-word-break: break-all;
+}
+.fly-panel {
+	border-radius: 2px; margin-bottom: 15px; box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.05);
+}
+.fly-none {
+	text-align: center; color: rgb(153, 153, 153); padding-top: 50px; min-height: 600px;
+}
+.fly-none .layui-icon {
+	color: rgb(57, 61, 73); line-height: 300px; font-size: 300px;
+}
+.fly-none p {
+	padding: 0px 15px; color: rgb(153, 153, 153); font-size: 20px; font-weight: 300; margin-top: 50px;
+}
+#tab_right {
+	left: 0px; top: 35px; width: 80px; display: none; position: absolute;
+}
+#tab_right dl {
+	top: 0px;
+}
+#tab_show {
+	padding: 0px; top: 36px; width: 100%; bottom: 0px; overflow: hidden; display: none; position: absolute;
+}
+@media screen and (max-width:768px)
+{
+.fast-add {
+	display: none;
+}
+.layui-nav .to-index {
+	display: none;
+}
+.container .logo a {
+	width: 140px;
+}
+.container .left_open {
+	
+}
+.left-nav {
+	width: 60px;
+}
+.left-nav #nav li a i {
+	font-size: 18px;
+}
+.left-nav cite {
+	display: none;
+}
+.left-nav .nav_right {
+	display: none;
+}
+.page-content {
+	left: 60px;
+}
+.page-content .layui-tab-content .layui-tab-item {
+	-ms-overflow-y: scroll; -webkit-overflow-scrolling: touch;
+}
+.x-so input.layui-input {
+	margin: 10px; width: 100%;
+}
+}
+.x-admin-sm {
+	font-size: 12px;
+}
+.x-admin-sm body {
+	font-size: 12px;
+}
+.x-admin-sm .login input[type=submit] {
+	font-size: 14px;
+}
+.x-admin-sm .login input[type=button] {
+	font-size: 14px;
+}
+.x-admin-sm .login input[type=text] {
+	font-size: 12px;
+}
+.x-admin-sm .login input[type=file] {
+	font-size: 12px;
+}
+.x-admin-sm .login input[type=password] {
+	font-size: 12px;
+}
+.x-admin-sm .login input[type=email] {
+	font-size: 12px;
+}
+.x-admin-sm select {
+	font-size: 12px;
+}
+.x-admin-sm .login .message {
+	font-size: 14px;
+}
+.x-admin-sm .layui-table td {
+	font-size: 12px;
+}
+.x-admin-sm .layui-table th {
+	font-size: 12px;
+}
+.x-admin-sm .layui-elem-field legend {
+	font-size: 18px;
+}
+.x-admin-sm .x-admin-backlog-body p cite {
+	font-size: 24px;
+}
+.x-admin-sm .left-nav #nav li a cite {
+	font-size: 12px;
+}
+.x-admin-sm .iconfont {
+	font-size: 14px;
+}
+.x-admin-sm .layui-tab-title li {
+	font-size: 12px;
+}
+.x-admin-sm .layui-icon {
+	font-size: 14px;
+}
+.x-admin-sm .layui-nav * {
+	font-size: 12px;
+}
+.x-admin-sm .layui-breadcrumb > * {
+	font-size: 12px;
+}
+.x-admin-sm .layui-btn {
+	font-size: 12px;
+}
+.x-admin-sm .layui-btn-xs {
+	font-size: 12px;
+}
+.x-admin-sm .layui-btn-sm {
+	font-size: 12px;
+}
+.x-admin-sm .layui-laydate {
+	font-size: 12px;
+}
+.x-admin-sm .layui-btn {
+	padding: 0px 10px; height: 30px; line-height: 30px;
+}
+.x-admin-sm .layui-btn-lg {
+	padding: 0px 18px; height: 38px; line-height: 38px; font-size: 14px;
+}
+.x-admin-sm .layui-layer-title {
+	font-size: 12px;
+}
+.x-admin-sm .layui-layer-dialog .layui-layer-content {
+	font-size: 12px;
+}
+.x-admin-sm .layui-input {
+	height: 30px;
+}
+.x-admin-sm .layui-select {
+	height: 30px;
+}
+.x-admin-sm .layui-textarea {
+	height: 30px;
+}
+.x-admin-sm .layui-form-pane .layui-form-label {
+	height: 30px; line-height: 14px;
+}
+.x-admin-sm .layui-form-checkbox span {
+	font-size: 12px;
+}
+.x-admin-sm .fly-none .layui-icon {
+	color: rgb(57, 61, 73); line-height: 300px; font-size: 300px;
+}
+.new-nav {
+	padding: 0px 10px; width: 60px; height: 45px; line-height: 45px; float: left; position: relative;
+}
+.new-nav .news {
+	background: rgb(255, 255, 255); border: 1px solid rgb(229, 188, 212); border-image: none; top: 45px; width: 240px; right: -60px; color: rgb(194, 194, 194); position: absolute; z-index: 9999;
+}
+.new-nav .news li {
+	padding: 0px 10px; height: 45px; line-height: 45px; border-bottom-color: rgb(229, 188, 212); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.new-nav .news li:hover {
+	background: rgb(243, 228, 236);
+}
+.new-nav .news li i {
+	color: rgb(255, 255, 255);
+}
+.new-nav .news li a {
+	color: rgb(194, 194, 194);
+}
+.new-nav .news li:last-child {
+	text-align: center;
+}
+.new-nav .news li:last-child i {
+	color: rgb(180, 113, 160);
+}
+.new-nav .news .dropdown-header {
+	color: rgb(180, 113, 160); border-bottom-color: rgb(229, 188, 212); background-color: rgb(247, 236, 242) !important;
+}
+.new-nav .news .dropdown-header i {
+	color: rgb(180, 113, 160); margin-left: 10px;
+}
+.clearfix {
+	color: rgb(194, 194, 194);
+}
+.pull-right {
+	border-color: rgb(214, 72, 126); margin: 8px 5px 0px 0px; border-radius: 50px; width: 24px; height: 28px; text-align: center; color: rgb(255, 255, 255); line-height: 28px; padding-right: 0px; padding-left: 0px; float: right; display: inline-block; background-color: rgb(214, 72, 126) !important;
+}
+.btn {
+	margin: 0px 5px 0px 0px; border-radius: 3px; width: 24px; height: 28px; text-align: center; line-height: 28px; padding-right: 0px; padding-left: 0px; display: inline-block;
+}
+.btn-pink {
+	border-color: rgb(214, 72, 126); background-color: rgb(214, 72, 126) !important;
+}
+.btn-primary {
+	border-color: rgb(47, 185, 212); background-color: rgb(47, 185, 212) !important;
+}
+.btn-success {
+	border-color: rgb(135, 184, 127); background-color: rgb(135, 184, 127) !important;
+}
+.btn-info {
+	border-color: rgb(111, 179, 224); background-color: rgb(111, 179, 224) !important;
+}

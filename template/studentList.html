@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+
+<head>
+  <meta charset="utf-8">
+  <title>Students</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+    content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/index.css">
+
+  <script src="layui/layui.js" charset="utf-8"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+
+  <style>
+    .dh6input {
+      width: 100px;
+      height: 28px;
+      border-radius: 3px;
+      border: 1px solid #bbbbbb;
+      padding-left: 3px
+    }
+	.tou th {text-align:center}
+	#tbody td {text-align:center; padding:7px 4px 7px 4px}
+  </style>
+</head>
+
+<body style="background-color:white">
+    <div class="layui-card">
+      <div class="layui-card-body">
+          <table style="width:100%">
+            <tr>
+              <td>
+			    <button class="layui-btn" onclick="xadmin.open('New one','studentEdit.php',600,555);return false" style="margin-left:2px"><i class="layui-icon"></i>New</button>
+				<button style="margin-left:0px" class="layui-btn layui-btn-danger" onclick="del();return false;"><i class="layui-icon"></i>Delete</button>
+              </td>
+              <td style="width:100px">
+                <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:0px;float:right;margin-right:5px"
+                  onclick="location.reload()" title="Refresh">
+                  <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+              </td>
+            </tr>
+          </table>
+      </div>
+
+      <div class="layui-card-body" style="padding-top:0px">
+        <table class="layui-table layui-form" style='width:100%;table-layout:fixed'>
+          <thead class="tou">
+            <tr>
+              <th style="width:20px"></th>
+              <th style="width:auto">Name</th>
+              <th style="width:auto">Gender</th>
+              <th style="width:auto">Major</th>
+              <th style="width:100px">Created time</th>
+          </thead>
+          <tbody id="tbody">
+		  	<!--start list-->
+            <tr>
+              <td>
+                <input type="checkbox" name="chk" lay-skin="primary" value="$id">
+              </td>
+              <td style='text-align:left'><a href="javascript:xadmin.open('Edit','studentEdit.php?studentId=$id',600,555);">$firstName $lastName</a></td>
+              <td>$gender</a></td>
+              <td>$major</a></td>
+              <td>$createdAt</a></td>
+            </tr>
+		  	<!--end list-->
+          </tbody>
+        </table>
+      </div>
+    </div>
+</body>
+<script>
+  layui.use(['laydate', 'form'], function () {
+    var laydate = layui.laydate;
+    var form = layui.form;
+
+    
+    laydate.render({
+      elem: '#start' 
+    });
+
+    
+    laydate.render({
+      elem: '#end' 
+    });
+  });
+
+</script>
+
+<script>
+function del()
+{
+	var ids = ""; 
+	$("input[name='chk']:checked").each(function() { 
+		ids += "," + $(this).val(); 
+	});
+	if (ids=="")
+	{
+		alert("Please select the item to delete.");
+	}
+	else
+	{
+		ids = ids.substring(1);
+		if (confirm("Are you sure to delete these items?"))
+		{
+			$.ajax({
+				type: "POST",
+				async: false,
+				url: "ajax/studentDelete.php",
+				dataType: "json",
+				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+				data: {
+					ids: ids
+				},
+				success: function (response)
+				{
+					if (response.result)
+					{
+						location.reload();
+					}
+					else
+					{
+						alert(response.message);
+					}
+				},
+				error: function (XMLHttpRequest, textStatus, thrownError)
+				{
+					alert(thrownError);
+					return false;
+				}
+			});
+		}
+	}
+	
+}
+</script>
+</html>

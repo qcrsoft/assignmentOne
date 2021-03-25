@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>WIS</title>
+<script language=javascript src='js/jquery-3.5.1.min.js'></script>
+
+<style>
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+.cms_login {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	background-repeat: no-repeat;
+	background-image: url('images/Law1QY.jpg');
+	background-size: 100% 100%;
+}
+
+.cms_login_container {
+	width: 600px;
+	height: 360px;
+	border-radius: 10px;
+	border: 1px solid #ccc;
+	box-shadow: 0px 0px 10px #ccc;
+	background-color: #fff;
+	margin: auto;
+	opacity: 0.8;
+}
+
+.cms_login_text {
+	height: 100px;
+	width: 100%;
+	line-height: 80px;
+	text-align: center;
+	font-size: 30px;
+}
+
+.cms_login_table {
+	font-size: 18px;
+}
+
+/* 统一盒子样式 */
+.divBox {
+	height: 50px;
+	width: 100%;
+	line-height: 50px;
+	text-align: center;
+}
+
+.cms_login_ipt {
+	height: 30px;
+	width: 290px;
+	padding-left: 5px;
+	border-radius: 5px;
+	outline: none;
+}
+
+input:focus {
+	border-radius: 5px;
+	outline: none;
+	border: 2px solid #66afe9;
+	box-shadow: inset 0 2px 2px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.margin_right10 {
+	margin-right: 10px;
+}
+
+.margin_top60 {
+	margin-top: 50px;
+}
+
+.login_btn {
+	width: 360px;
+	height: 100%;
+	background-color: #1360a7;
+	border-radius: 10px;
+	outline: none;
+	font-size: 24px;
+	color: white;
+	letter-spacing: 24px;
+}
+
+.login_btn:hover {
+	background-color: #1e5d5d;
+}
+</style>
+</head>
+
+<body>
+<div class="cms_login">
+<div class="cms_login_container">
+	<div class="cms_login_text">WIS Management System</div>
+	<div class="cms_login_table">
+		<form onsubmit="return validate()" method="post">
+			<div class="divBox"><span class="margin_right10">Username</span><input type="text" id="username" name="username" placeholder="enter your username"
+					class="cms_login_ipt" required="required" autofocus="autofocus">
+			</div>
+			<div class="divBox"><span class="margin_right10">Password</span><input type="password" id="password" name="password" placeholder="enter your password"
+					class="cms_login_ipt"required="required">
+			</div>
+			<div style="padding-left:190px; margin-top:3px;text-align:left">
+				<input type=checkbox name=autologin id=autologin value=1 /><label for="autologin" style="padding-left:5px">remember me</label>
+				<a href='signup.php' style='margin-left:100px'>sign up</span>
+			</div>
+			<div class="divBox margin_top60">
+				<button class="login_btn">Sign in</button>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+</body>
+
+</html>
+
+
+<script>
+function validate()
+{
+	$.ajax({
+		type: "POST",
+		async: false,
+		url: "ajax/login.php",
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded; charset=utf-8",
+		data: {
+			username: $("#username").val(),
+			password: $("#password").val(),
+			autologin: $("#autologin").val()
+		},
+		success: function (response)
+		{
+			if (response.result)
+			{
+				location.href = "main.php";
+			}
+			else
+			{
+				alert(response.message);
+			}
+		},
+		error: function (XMLHttpRequest, textStatus, thrownError)
+		{
+			alert(thrownError);
+			return false;
+		}
+	});
+	return false;
+}
+</script>

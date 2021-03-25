@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+    content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/index.css">
+
+  <script src="layui/layui.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./js/index.js"></script>
+
+  <style>
+    .dh6input {
+      width: 100px;
+      height: 28px;
+      border-radius: 3px;
+      border: 1px solid #bbbbbb;
+      padding-left: 3px
+    }
+	.input1
+	{
+      width: 95%;
+      height: 28px;
+      border-radius: 3px;
+      border: 1px solid #bbbbbb;
+      padding-left: 3px
+	 }
+  </style>
+</head>
+
+<body style="background-color:white">
+	<form id=frm onsubmit="validate();return false" method="post" enctype="multipart/form-data">
+      <div class="layui-card-body">
+		<table class="layui-table">
+			<tr>
+				<td style='width:100px'>Student</td>
+				<td>
+					<select id=studentId name=studentId>
+						<!--start students-->
+						<option value="$value" $selected>$text</option>
+						<!--end students-->
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td style='width:100px'>Tuition</td>
+				<td>
+					<input type=text id="amount" name="amount" class="input1" value="$amount" required="required" />
+				</td>
+			</tr>
+		</table>
+		<div style='padding-left:145px;margin-top:10px'>
+			<button class="layui-btn" style="width:80px" style="margin-left:2px">Save</button>
+			<input type=button class="layui-btn" style="width:80px" style="margin-left:2px" onclick="xadmin.close()" value="Cancel" />
+		</div>
+      </div>
+	<input type=hidden id="tuitionId" name="tuitionId" value="$tuitionId" />
+	</form>
+</body>
+<script>
+function validate()
+{
+	$.ajax({
+		type: "POST",
+		async: false,
+		url: "ajax/tuitionSave.php",
+		data: new FormData($("#frm")[0]),
+		cache: false,
+		processData: false,
+		contentType: false,
+		success: function (response)
+		{
+				xadmin.close();
+				xadmin.father_reload();
+				return;
+	
+			if (response.result)
+			{
+				//alert(response.message);
+				xadmin.close();
+				xadmin.father_reload();
+			}
+			else
+			{
+				alert(response.message);
+			}
+		},
+		error: function (XMLHttpRequest, textStatus, thrownError)
+		{
+			alert(thrownError);
+			return false;
+		}
+	});
+	return false;
+}
+</script>
+</html>
