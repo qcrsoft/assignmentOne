@@ -141,10 +141,13 @@ function validate()
 	$.ajax({
 		type: "POST",
 		async: false,
-		url: "ajax/signin.php",
+		url: "ajax/signup.php",
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded; charset=utf-8",
-		data: new FormData($("#frm")[0]),
+		data: {
+			username: $("#username").val(),
+			password: $("#password").val()
+		},
 		success: function (response)
 		{
 			if (response.result)

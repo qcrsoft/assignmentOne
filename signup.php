@@ -14,6 +14,6 @@ if ($_SESSION['currentManagerId']!=null || $_COOKIE["currentManagerId"]!=null)
 }
 
 require('repository/qcrsoft.HtmlTemplate.php'); 
-$template = new HtmlTemplate("template/sign.html");
+$template = new HtmlTemplate("template/signup.html");
 echo $template->GetText();
 ?>
