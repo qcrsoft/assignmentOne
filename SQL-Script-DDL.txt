@@ -1,0 +1,137 @@
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for parent
+-- ----------------------------
+DROP TABLE IF EXISTS `parent`;
+CREATE TABLE `parent`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createdAt` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `firstName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `lastName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `studentId` int(6) NOT NULL,
+  `relation` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for mark
+-- ----------------------------
+DROP TABLE IF EXISTS `mark`;
+CREATE TABLE `mark`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createdAt` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `studentId` int(11) NOT NULL,
+  `programId` int(11) NOT NULL,
+  `score` decimal(10, 2) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Fixed;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for lecturer
+-- ----------------------------
+DROP TABLE IF EXISTS `lecturer`;
+CREATE TABLE `lecturer`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createdAt` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `firstName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `lastName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `gender` varchar(6) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `introduction` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for tuition
+-- ----------------------------
+DROP TABLE IF EXISTS `tuition`;
+CREATE TABLE `tuition`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createdAt` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `studentId` int(100) NOT NULL,
+  `amount` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for student
+-- ----------------------------
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE `student`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createdAt` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `firstName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `lastName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `gender` varchar(6) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `major` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` int(255) NULL DEFAULT 1,
+  PRIMARY KEY (`id`, `gender`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for program
+-- ----------------------------
+DROP TABLE IF EXISTS `program`;
+CREATE TABLE `program`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createdAt` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `introduction` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` int(255) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for manager
+-- ----------------------------
+DROP TABLE IF EXISTS `manager`;
+CREATE TABLE `manager`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createdAt` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;

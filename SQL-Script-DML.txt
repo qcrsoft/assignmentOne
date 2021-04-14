@@ -1,0 +1,54 @@
+-- ----------------------------
+-- Records of program
+-- ----------------------------
+INSERT INTO `program` VALUES (1, '2021-03-22 12:23:53', '440', '440', 0);
+INSERT INTO `program` VALUES (2, '2021-03-22 12:24:34', '8', '9', 0);
+INSERT INTO `program` VALUES (3, '2021-03-22 23:13:42', 'Postgraduate Diploma in Business Administration', 'The Postgraduate Diploma in Business Administration (PGDBA) comprises 8 courses of the Master of Business Administration (MBA) degree and is ideally suited to busy managers seeking to increase their career skills in a shorter time frame.', 1);
+INSERT INTO `program` VALUES (4, '2021-03-22 23:14:14', 'Graduate Diploma in Business', 'Button for easy access to information about this qualification\r\nGraduate Diploma in Business (GDBus)\r\nThe Graduate Diploma in Business (GDBus) is designed for graduates of a bachelor’s degree or similar qualification in a discipline other than business who wish to achieve a level of competency and a qualification in business.', 1);
+INSERT INTO `program` VALUES (5, '2021-03-22 23:14:37', 'Bachelor of Business', 'The AIS Bachelor of Business (BBus) programme is designed to help our students develop general and specialist skills across the business sector, both in New Zealand and internationally.', 1);
+INSERT INTO `program` VALUES (6, '2021-03-22 23:15:30', 'Graduate Diploma in Information Technology', 'The Graduate Diploma in Information Technology (GDIT) meets the needs of students who have either completed a bachelor’s degree in a non-IT field and wish to develop their knowledge in a particular branch of IT.', 1);
+
+-- ----------------------------
+-- Records of student
+-- ----------------------------
+INSERT INTO `student` VALUES (1, '2021-03-22 15:17:22', '10', '20', 'Male', '30', 0);
+INSERT INTO `student` VALUES (2, '2021-03-22 17:08:42', 'aa', 'bb', 'Female', 'cc', 0);
+INSERT INTO `student` VALUES (3, '2021-03-22 17:15:41', 'jj', 'jj', 'Female', 'jj', 0);
+INSERT INTO `student` VALUES (4, '2021-03-22 23:17:15', 'Caitlin', 'Cickson', 'Male', 'PGDIT', 1);
+INSERT INTO `student` VALUES (5, '2021-03-22 23:17:57', 'Kylie', 'Mar', 'Female', 'MBA', 1);
+INSERT INTO `student` VALUES (6, '2021-03-22 23:19:21', 'Marquise', 'Francis', 'Male', 'MBA', 1);
+
+-- ----------------------------
+-- Records of tuition
+-- ----------------------------
+INSERT INTO `tuition` VALUES (6, '2021-03-22 23:38:32', 5, '13500');
+INSERT INTO `tuition` VALUES (5, '2021-03-22 23:38:24', 4, '12000');
+INSERT INTO `tuition` VALUES (7, '2021-03-22 23:38:40', 6, '12000');
+
+-- ----------------------------
+-- Records of lecturer
+-- ----------------------------
+INSERT INTO `lecturer` VALUES (3, '2021-03-22 23:24:36', 'Jennifer', 'Larson', 'Female', 'I hold a BSc (1st class honours) in Information Science 1996, and a PhD on artificial neural networks, evolutionary algorithms and data mining 2004, both from the University of Otago.');
+INSERT INTO `lecturer` VALUES (4, '2021-03-22 23:25:32', 'Sarah', 'Handzel', 'Male', 'I hold a BEng (Hon) degree in Control Systems and Computing Systems, a Master of Systems Engineering, Post Graduate Certificate in Education, and Post Graduate Certificate in Marketing from the Universities of Huddersfield and Bradford in the UK.');
+INSERT INTO `lecturer` VALUES (5, '2021-03-22 23:26:11', 'Ari', 'Bines', 'Male', 'I am a full time staff member, since 2009, teaching database and software development, and information technology system and concept to both international business and information technology students, and also supervising IT students in their final projects.');
+
+-- ----------------------------
+-- Records of manager
+-- ----------------------------
+INSERT INTO `manager` VALUES (1, '2021-03-22 10:48:24', 'admin', '123456');
+
+-- ----------------------------
+-- Records of mark
+-- ----------------------------
+INSERT INTO `mark` VALUES (6, '2021-03-22 23:29:02', 6, 3, 83.00);
+INSERT INTO `mark` VALUES (5, '2021-03-22 23:28:48', 4, 4, 85.00);
+INSERT INTO `mark` VALUES (4, '2021-03-22 23:28:32', 5, 4, 92.00);
+INSERT INTO `mark` VALUES (7, '2021-03-22 23:29:18', 5, 4, 95.50);
+
+-- ----------------------------
+-- Records of parent
+-- ----------------------------
+INSERT INTO `parent` VALUES (3, '2021-03-22 23:34:25', 'Nazmi', 'Suhaimi', 4, 'Mother', '0272324123');
+INSERT INTO `parent` VALUES (4, '2021-03-22 23:34:44', 'James', 'Mountstephens', 5, 'Father', '021032423');
+INSERT INTO `parent` VALUES (5, '2021-03-22 23:35:00', 'Jason', 'Teo', 6, 'Mother', '027483948');
+INSERT INTO `parent` VALUES (6, '2021-03-22 23:35:39', 'Hiroshi', 'Kunugi', 6, 'Father', '0274829434');
