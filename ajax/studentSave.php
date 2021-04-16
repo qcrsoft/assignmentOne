@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-$firstName =  $_REQUEST["firstName"];
-$lastName =  $_REQUEST["lastName"];
-$major =  $_REQUEST["major"];
-$gender =  $_REQUEST["gender"];
+require('/conn.php'); 
+$firstName = mysqli_real_escape_string($conn, $_REQUEST["firstName"]);
+$lastName =  mysqli_real_escape_string($conn, $_REQUEST["lastName"]);
+$major =  mysqli_real_escape_string($conn, $_REQUEST["major"]);
+$gender =  mysqli_real_escape_string($conn, $_REQUEST["gender"]);
 $studentId =  (int)$_REQUEST["studentId"];
 
 $firstName =  str_replace("'", "''", $firstName);
@@ -20,7 +21,6 @@ else
 {
 	$sql = "UPDATE student SET firstName='$firstName', lastName='$lastName', gender='$gender', major='$major' where id=$studentId";
 }
-$conn = new mysqli("localhost", "root", "123456", "wis");
 
 if ($conn->query($sql) === TRUE)
 {
@@ -33,4 +33,3 @@ else
 $conn->close();
 
 echo json_encode($response);
-?>

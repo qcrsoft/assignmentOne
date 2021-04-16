@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 $relations = array("Mother","Father"); 
@@ -12,7 +12,7 @@ $template->ReplaceVar("parentId", $parentId);
 if ($parentId>0)
 {
 	$sql = "select * from parent where id=$parentId";
-	$conn = new mysqli("localhost", "root", "123456", "wis");
+	require('/conn.php'); 
 	$result = $conn->query($sql);
 
 	if($result->num_rows > 0)
@@ -37,7 +37,7 @@ if ($parentId>0)
 		}
 		$template->CloseBlock();
 
-		$conn = new mysqli("localhost", "root", "123456", "wis");
+		require('/conn.php'); 
 		$sql = "select * from student where enabled=1 OR id=" . $row["studentId"] . " ORDER BY firstName, lastName";
 
 		$resultStudent = $conn->query($sql);
@@ -80,7 +80,7 @@ else  //新增
 	}
 	$template->CloseBlock();
 
-	$conn = new mysqli("localhost", "root", "123456", "wis");
+	require('/conn.php'); 
 	$sql = "select * from student where enabled=1 ORDER BY firstName, lastName";
 	$resultStudent = $conn->query($sql);
 
@@ -97,4 +97,3 @@ else  //新增
 }
 
 echo $template->GetText();
-?>

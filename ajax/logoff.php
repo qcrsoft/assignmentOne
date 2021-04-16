@@ -8,4 +8,3 @@ setcookie("currentUsername", "", time() - 3600, "/");
 
 $response = array("result"=>true, "message"=>"");
 echo json_encode($response);
-?>

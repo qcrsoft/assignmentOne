@@ -1,10 +1,12 @@
 <?php
 session_start();
 
-$firstName =  $_REQUEST["firstName"];
-$lastName =  $_REQUEST["lastName"];
-$phone =  $_REQUEST["phone"];
-$relation =  $_REQUEST["relation"];
+require('/conn.php'); 
+
+$firstName = mysqli_real_escape_string($conn, $_REQUEST["firstName"]);
+$lastName =  mysqli_real_escape_string($conn, $_REQUEST["lastName"]);
+$phone =  mysqli_real_escape_string($conn, $_REQUEST["phone"]);
+$relation =  mysqli_real_escape_string($conn, $_REQUEST["relation"]);
 $parentId =  (int)$_REQUEST["parentId"];
 $studentId =  (int)$_REQUEST["studentId"];
 
@@ -21,7 +23,6 @@ else
 {
 	$sql = "UPDATE parent SET firstName='$firstName', lastName='$lastName', relation='$relation', phone='$phone', studentId=$studentId where id=$parentId";
 }
-$conn = new mysqli("localhost", "root", "123456", "wis");
 
 if ($conn->query($sql) === TRUE)
 {
@@ -34,4 +35,3 @@ else
 $conn->close();
 
 echo json_encode($response);
-?>

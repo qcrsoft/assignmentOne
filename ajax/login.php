@@ -1,10 +1,30 @@
 <?php
 session_start();
 
-$username =  $_REQUEST["username"];
-$password =  $_REQUEST["password"];
+$_GET		&& SafeFilter($_GET);
+$_REQUEST	&& SafeFilter($_REQUEST);
+$_POST		&& SafeFilter($_POST);
+$_COOKIE	&& SafeFilter($_COOKIE);
+
+$username =  mysqli_real_escape_string($conn, $_REQUEST["username"]);
+$password =  mysqli_real_escape_string($conn, $_REQUEST["password"]);
 $autologin =  $_REQUEST["autologin"];
 
+if (strlen($username)==0 || strlen($username)>50)
+{
+	$response = array("result"=>true, "message"=>"the username is too long");
+	echo json_encode($response);
+	exit;
+}
+
+if (strlen($password)==0 || strlen($password)>50)
+{
+	$response = array("result"=>true, "message"=>"the password is too long");
+	echo json_encode($response);
+	exit;
+}
+
+$password = md5($password);
 $sql = "select * from manager where username='$username' and password='$password'";
 
 $conn = new mysqli("localhost", "root", "123456", "wis");
@@ -34,4 +54,32 @@ else
 $conn->close();
 
 echo json_encode($response);
-?>
+
+function SafeFilter (&$arr) 
+{
+   $ra=Array('/([\x00-\x08,\x0b-\x0c,\x0e-\x19])/','/script/','/javascript/','/vbscript/','/expression/','/applet/'
+   ,'/meta/','/xml/','/blink/','/link/','/style/','/embed/','/object/','/frame/','/layer/','/title/','/bgsound/'
+   ,'/base/','/onload/','/onunload/','/onchange/','/onsubmit/','/onreset/','/onselect/','/onblur/','/onfocus/',
+   '/onabort/','/onkeydown/','/onkeypress/','/onkeyup/','/onclick/','/ondblclick/','/onmousedown/','/onmousemove/'
+   ,'/onmouseout/','/onmouseover/','/onmouseup/','/onunload/');
+     
+   if (is_array($arr))
+   {
+     foreach ($arr as $key => $value) 
+     {
+        if (!is_array($value))
+        {
+          if (!get_magic_quotes_gpc())
+          {
+             $value  = addslashes($value);
+          }
+          $value       = preg_replace($ra,'',$value);
+          $arr[$key]     = htmlentities(strip_tags($value));
+        }
+        else
+        {
+          SafeFilter($arr[$key]);
+        }
+     }
+   }
+}

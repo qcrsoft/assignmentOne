@@ -14,7 +14,7 @@ else
 {
 	$sql = "UPDATE mark SET score=$score, programId=$programId, studentId=$studentId where id=$markId";
 }
-$conn = new mysqli("localhost", "root", "123456", "wis");
+require('/conn.php'); 
 
 if ($conn->query($sql) === TRUE)
 {
@@ -27,4 +27,3 @@ else
 $conn->close();
 
 echo json_encode($response);
-?>

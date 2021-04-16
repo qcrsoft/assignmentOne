@@ -1,4 +1,4 @@
-<?
+<?php
 function query($sql)
 {
 	$conn = new mysqli("localhost", "wa3239_1", "Ww040506#", "wa3239_db1");
@@ -7,4 +7,3 @@ function query($sql)
 
 	return $result;
 }
-?>

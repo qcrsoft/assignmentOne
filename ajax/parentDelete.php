@@ -5,7 +5,7 @@ $ids =  $_REQUEST["ids"];
 
 if ($ids!="")
 {
-	$conn = new mysqli("localhost", "root", "123456", "wis");
+	require('/conn.php'); 
 
 	$sql = "DELETE FROM parent WHERE id IN ($ids)";
 	if ($conn->query($sql) === TRUE)
@@ -25,4 +25,3 @@ else
 }
 
 echo json_encode($response);
-?>

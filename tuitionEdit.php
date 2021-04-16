@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 $tuitionId =  (int)$_REQUEST["tuitionId"];
@@ -10,7 +10,7 @@ $template->ReplaceVar("tuitionId", $tuitionId);
 if ($tuitionId>0)
 {
 	$sql = "select * from tuition where id=$tuitionId";
-	$conn = new mysqli("localhost", "root", "123456", "wis");
+	require('/conn.php'); 
 	$result = $conn->query($sql);
 
 	if($result->num_rows > 0)
@@ -47,7 +47,7 @@ else  //新增
 {
 	$template->ReplaceVar("amount", "");
 
-	$conn = new mysqli("localhost", "root", "123456", "wis");
+	require('/conn.php'); 
 
 	$sql = "select * from student where enabled=1 ORDER BY firstName, lastName";
 	$resultStudent = $conn->query($sql);
@@ -65,4 +65,3 @@ else  //新增
 }
 
 echo $template->GetText();
-?>
