@@ -1,0 +1,47 @@
+version: "3"
+services:
+  jenkins:
+    build: .docker/jenkins
+    #ports:
+    #  - 8080:8080
+    volumes:
+      - ./:/docker-host/
+      - jenkins-var-jenkins_home:/var/jenkins_home
+    command: /sbin/tini /docker-host/.docker/jenkins/boot.sh
+    depends_on:
+      - db
+
+  app:
+    build: .docker/app
+    #ports:
+    #  - 8000:8000
+    volumes:
+      - ./:/docker-host/
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./:/docroot/
+      - app-var-lib-mysql:/var/lib/mysql.
+    command: php -S 0.0.0.0:8000 -t /docroot
+    #command: bash -c 'ln -sf .env.dev .env && composer install -n --prefer-dist && php artisan serve --host 0.0.0.0'
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.2
+    #ports:
+    #  - 3306:3306
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_DATABASE: soft806_assignment
+    volumes:
+      - ./:/docker-host/
+      - ./.docker/db/etc/mysql/conf.d/:/etc/mysql/conf.d/
+      - ./.docker/db/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+      - db-var-lib-mysql:/var/lib/mysql/
+
+volumes:
+  jenkins-var-jenkins_home:
+  app-var-lib-mysql:
+  db-var-lib-mysql:
