@@ -1,8 +1,9 @@
 <?php
 session_start();
 
-$name =  $_REQUEST["name"];
-$introduction =  $_REQUEST["introduction"];
+require('/conn.php'); 
+$name =  mysqli_real_escape_string($conn, $_REQUEST["name"]);
+$introduction =  mysqli_real_escape_string($conn, $_REQUEST["introduction"]);
 $programId =  (int)$_REQUEST["programId"];
 
 $name =  str_replace("'", "''", $name);
@@ -17,7 +18,6 @@ else
 {
 	$sql = "UPDATE program SET name='$name' $m1, introduction='$introduction' where id=$programId";
 }
-$conn = new mysqli("localhost", "root", "123456", "wis");
 
 if ($conn->query($sql) === TRUE)
 {
@@ -30,4 +30,3 @@ else
 $conn->close();
 
 echo json_encode($response);
-?>

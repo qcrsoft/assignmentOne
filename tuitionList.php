@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 require('repository/qcrsoft.HtmlTemplate.php'); 
@@ -6,7 +6,7 @@ require('repository/qcrsoft.HtmlTemplate.php');
 $template = new HtmlTemplate("template/tuitionList.html");
 
 $sql = "select tuition.*, student.firstName as studentFirstname, student.lastName as studentLastname from tuition, student WHERE tuition.studentId=student.id order by tuition.id desc";
-$conn = new mysqli("localhost", "root", "123456", "wis");
+require('/conn.php'); 
 $result = $conn->query($sql);
 
 $template->OpenBlock("list");
@@ -25,4 +25,3 @@ $template->CloseBlock();
 $conn->close();
 
 echo $template->GetText();
-?>

@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 $genders = array("Female","Male"); 
@@ -12,7 +12,7 @@ $template->ReplaceVar("lecturerId", $lecturerId);
 if ($lecturerId>0)
 {
 	$sql = "select * from lecturer where id=$lecturerId";
-	$conn = new mysqli("localhost", "root", "123456", "wis");
+	require('/conn.php'); 
 	$result = $conn->query($sql);
 
 	if($result->num_rows > 0)
@@ -64,4 +64,3 @@ else  //ÐÂÔö
 }
 
 echo $template->GetText();
-?>

@@ -1,4 +1,4 @@
-<?
+<?php
 function randomString($type, $length)
 {
 	if ($type==0)
@@ -55,4 +55,3 @@ function GetCurrentProjectId()
 	return $projectId;
 }
 
-?>

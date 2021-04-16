@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 $programId =  (int)$_REQUEST["programId"];
@@ -12,7 +12,7 @@ $template->ReplaceVar("programId", $programId);
 if ($programId>0)
 {
 	$sql = "select * from program where enabled=1 and id=$programId";
-	$conn = new mysqli("localhost", "root", "123456", "wis");
+	require('/conn.php'); 
 	$result = $conn->query($sql);
 
 	if($result->num_rows > 0)
@@ -36,4 +36,3 @@ else
 }
 
 echo $template->GetText();
-?>

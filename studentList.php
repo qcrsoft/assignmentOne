@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 require('repository/qcrsoft.HtmlTemplate.php'); 
@@ -6,7 +6,7 @@ require('repository/qcrsoft.HtmlTemplate.php');
 $template = new HtmlTemplate("template/studentList.html");
 
 $sql = "select * from student where enabled=1 order by id desc";
-$conn = new mysqli("localhost", "root", "123456", "wis");
+require('/conn.php'); 
 $result = $conn->query($sql);
 
 $template->OpenBlock("list");
@@ -26,4 +26,3 @@ $template->CloseBlock();
 $conn->close();
 
 echo $template->GetText();
-?>
