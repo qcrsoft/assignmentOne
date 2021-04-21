@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 if ($_SESSION['currentManagerId']==null)
@@ -19,4 +19,3 @@ require('repository/qcrsoft.HtmlTemplate.php');
 $template = new HtmlTemplate("template/main.html");
 
 echo $template->GetText();
-?>

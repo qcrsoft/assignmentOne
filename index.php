@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 if ($_SESSION['currentManagerId']!=null || $_COOKIE["currentManagerId"]!=null)
@@ -13,8 +13,6 @@ if ($_SESSION['currentManagerId']!=null || $_COOKIE["currentManagerId"]!=null)
 	exit;
 }
 
-
 require('repository/qcrsoft.HtmlTemplate.php'); 
 $template = new HtmlTemplate("template/index.html");
 echo $template->GetText();
-?>

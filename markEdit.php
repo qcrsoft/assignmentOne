@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 $markId =  (int)$_REQUEST["markId"];
@@ -10,7 +10,7 @@ $template->ReplaceVar("markId", $markId);
 if ($markId>0)
 {
 	$sql = "select * from mark where id=$markId";
-	$conn = new mysqli("localhost", "root", "123456", "wis");
+	require('/conn.php'); 
 	$result = $conn->query($sql);
 
 	if($result->num_rows > 0)
@@ -19,7 +19,7 @@ if ($markId>0)
 
 		$template->ReplaceVar("score", $row["score"]);
 
-		//$conn = new mysqli("localhost", "root", "123456", "wis");
+		//require('/conn.php'); 
 		$sql = "select * from student where enabled=1 OR id=" . $row["studentId"] . " ORDER BY firstName, lastName";
 
 		$resultStudent = $conn->query($sql);
@@ -66,7 +66,7 @@ else  //新增
 {
 	$template->ReplaceVar("score", "");
 
-	$conn = new mysqli("localhost", "root", "123456", "wis");
+	require('/conn.php'); 
 
 	$sql = "select * from student where enabled=1 ORDER BY firstName, lastName";
 	$resultStudent = $conn->query($sql);
@@ -98,4 +98,3 @@ else  //新增
 }
 
 echo $template->GetText();
-?>

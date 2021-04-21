@@ -1,4 +1,4 @@
-<?
+<?php
 class HtmlTemplate
 {
 	// 当前块
@@ -128,4 +128,3 @@ class Block
 		}
 	}
 }
-?>
